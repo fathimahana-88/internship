@@ -6,7 +6,22 @@
 <body>
     <h1 id="title">JS Project</h1>
     <div id="output"></div>
-    <button onclick="changeDOM()"></button>
+    <button onclick="changeDOM()">Change DOM</button>
+    <h3>Add Items</h3>
+<input type="text" id="itemInput" placeholder="Enter item">
+<button onclick="addItem()">Add Item</button>
+<ul id="list"></ul>
+<h3>My Tasks</h3>
+<input type="text" id="todoInput" placeholder="Enter task">
+<button onclick="addTodo()">Add Task</button>
+<ul id="todoList"></ul>
+
+<h3>Profile Card</h3>
+<button onclick="toggle()">Show / Hide Profile</button>
+<div id="box" style="width:200px;padding:10px;background:lightblue;margin-top:10px;">
+    <p>Name: Hana</p>
+    <p>Course: BCA</p>
+</div>
     <script src="script.js"></script>
 </body>
 </html>
