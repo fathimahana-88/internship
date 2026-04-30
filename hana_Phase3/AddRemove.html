@@ -1,17 +1,31 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>Add Remove Elements</title>
+</head>
 <body>
-<button onclick="addItem()">Add Item</button>
-<button onclick="removeItem()">Remove Item</button>
+<h2>Items</h2>
+<input type="text" id="itemInput" placeholder="Enter item">
+<button onclick="addItem()">Add</button>
+<button onclick="removeItem()">Remove Last</button>
 <ul id="list"></ul>
 
 <script>
 function addItem() {
-    const li = document.createElement("li");
-    li.textContent = "New Item";
+    let input = document.getElementById("itemInput");
+    let value = input.value;
+
+    if (value === "") return;
+
+    let li = document.createElement("li");
+    li.textContent = value;
     document.getElementById("list").appendChild(li);
+    input.value = "";
 }
+
 function removeItem() {
-    const list = document.getElementById("list");
+    let list = document.getElementById("list");
+
     if (list.lastChild) {
         list.removeChild(list.lastChild);
     }

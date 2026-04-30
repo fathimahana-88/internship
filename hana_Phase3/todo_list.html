@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To Do List</title>
+</head>
+<body>
+<input type="text" id="task">
+<button onclick="addTask()">Add Task</button>
+<ul id="list"></ul>
+
+<script>
+let tasks = [];
+
+function addTask() {
+    let input = document.getElementById("task");
+    let task = input.value;
+
+    if (task === "") return;
+
+    tasks.push(task);
+    display();
+
+    input.value = ""; 
+}
+
+function display() {
+    let list = document.getElementById("list");
+    list.innerHTML = "";
+
+    tasks.forEach(function(t, i) {
+        let li = document.createElement("li");
+        li.textContent = t;
+        let btn = document.createElement("button");
+        btn.textContent = "Delete";
+        btn.onclick = function() {
+            tasks.splice(i, 1);
+            display();
+        };
+        li.appendChild(btn);
+        list.appendChild(li);
+    });
+}
+</script>
+</body>
+</html>

@@ -1,14 +1,16 @@
 <html>
+<head>
+    <title>Live Preview</title>
+</head>
 <body>
 
-<input type="text" id="input" placeholder="Type something">
+<input type="text" id="input" placeholder="Type here...">
 <p id="preview"></p>
 
 <script>
-document.getElementById("input").addEventListener("input", function(e) {
-    document.getElementById("preview").textContent = e.target.value;
+document.getElementById("input").addEventListener("keyup", function() {
+    document.getElementById("preview").textContent = this.value;
 });
 </script>
-
 </body>
 </html>

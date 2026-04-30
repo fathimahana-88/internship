@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Text Style</title>
+</head>
+<body>
+
+<p id="text">Hello World</p>
+
+<button onclick="changeText()">Change Text</button>
+<button onclick="changeStyle()">Change Style</button>
+
+<script>
+function changeText() {
+    document.getElementById("text").textContent = "Welcome Back";
+}
+
+function changeStyle() {
+    let el = document.getElementById("text");
+    el.style.color = "blue";
+    el.style.fontSize = "20px";
+}
+</script>
+</body>
+</html>

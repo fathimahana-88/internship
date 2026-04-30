@@ -1,19 +1,93 @@
 <html>
+<head>
+    <title>Form Validation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 260px;
+        }
+        input, button {
+            margin: 8px 0;
+            padding: 8px;
+        }
+        .error {
+            color: red;
+            font-size: 13px;
+        }
+        .success {
+            color: green;
+            font-size: 13px;
+            text-align: center;
+        }
+    </style>
+</head>
 <body>
 <form id="form">
-    <input type="text" id="name" placeholder="Enter name">
-    <button type="submit">Submit</button>
+    <input type="text" id="user" placeholder="Username">
+    <span id="userError" class="error"></span>
+    <input type="password" id="pass" placeholder="Password">
+    <span id="passError" class="error"></span>
+    <button type="submit">Login</button>
+    <p id="successMsg" class="success"></p>
 </form>
-<p id="error" style="color:red;"></p>
 
 <script>
+let usernameInput = document.getElementById("user");
+let passwordInput = document.getElementById("pass");
+let userError = document.getElementById("userError");
+let passError = document.getElementById("passError");
+let successMsg = document.getElementById("successMsg");
+let usernamePattern = /^[A-Za-z0-9]+$/;
+let strongPassword = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{6,}$/;
+usernameInput.addEventListener("blur", function() {
+    let value = usernameInput.value;
+
+    if (value === "") {
+        userError.textContent = "Username required";
+    } 
+    else if (!usernamePattern.test(value)) {
+        userError.textContent = "Only letters and numbers allowed";
+    } 
+    else {
+        userError.textContent = "";
+    }
+});
+
+passwordInput.addEventListener("blur", function() {
+    let value = passwordInput.value;
+    if (value === "") {
+        passError.textContent = "Password required";
+    } 
+    else if (!strongPassword.test(value)) {
+        passError.textContent = "Min 6 chars, 1 uppercase, 1 number, 1 special character";
+    } 
+    else {
+        passError.textContent = "";
+    }
+});
+
 document.getElementById("form").addEventListener("submit", function(e) {
     e.preventDefault();
-    const name = document.getElementById("name").value;
-    if (name === "") {
-        document.getElementById("error").textContent = "Name cannot be empty";
+    usernameInput.dispatchEvent(new Event("blur"));
+    passwordInput.dispatchEvent(new Event("blur"));
+
+    if (
+        userError.textContent === "" &&
+        passError.textContent === "" &&
+        usernameInput.value !== "" &&
+        passwordInput.value !== ""
+    ) {
+        successMsg.textContent = "Login successful";
     } else {
-        document.getElementById("error").textContent = "Form submitted!";
+        successMsg.textContent = "";
     }
 });
 </script>

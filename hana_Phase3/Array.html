@@ -1,19 +1,20 @@
 <html>
 <head>
-    <title>Array</title>
+    <title>Array Display</title>
 </head>
 <body>
-<h2>Items List</h2>
+
+<h2>Fruits List</h2>
 <ul id="list"></ul>
 
 <script>
-    const items = ["Apple", "Banana", "Mango"];
-    const list = document.getElementById("list");
-    items.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = item;
-        list.appendChild(li);
-    });
+let fruits = ["Apple", "Mango", "Orange"];
+let ul = document.getElementById("list");
+fruits.forEach(function(item) {
+    let li = document.createElement("li");
+    li.textContent = item;
+    ul.appendChild(li);
+});
 </script>
 </body>
 </html>
