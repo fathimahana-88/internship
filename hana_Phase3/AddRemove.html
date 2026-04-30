@@ -1,0 +1,21 @@
+<html>
+<body>
+<button onclick="addItem()">Add Item</button>
+<button onclick="removeItem()">Remove Item</button>
+<ul id="list"></ul>
+
+<script>
+function addItem() {
+    const li = document.createElement("li");
+    li.textContent = "New Item";
+    document.getElementById("list").appendChild(li);
+}
+function removeItem() {
+    const list = document.getElementById("list");
+    if (list.lastChild) {
+        list.removeChild(list.lastChild);
+    }
+}
+</script>
+</body>
+</html>

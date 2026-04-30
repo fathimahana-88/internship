@@ -1,0 +1,14 @@
+<html>
+<body>
+
+<input type="text" id="input" placeholder="Type something">
+<p id="preview"></p>
+
+<script>
+document.getElementById("input").addEventListener("input", function(e) {
+    document.getElementById("preview").textContent = e.target.value;
+});
+</script>
+
+</body>
+</html>
